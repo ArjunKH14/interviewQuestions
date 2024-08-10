@@ -1,0 +1,17 @@
+{
+  "name": "coding",
+  "version": "1.0.0",
+  "description": "Interview problems",
+  "scripts": {
+   "decode": "ts-node start.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "inquirer": "^10.1.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
