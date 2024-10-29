@@ -24,6 +24,19 @@ const hasDuplicate = (target: number[]) => {
   return setTarget.size !== target.length;
 };
 
+const hasDuplicate2 = (target: number[]) => {
+  const setTarget = new Set();
+
+  for (let i = 0; i < target.length; i++) {
+    if (setTarget.has(target[i])) {
+      return true;
+    }
+    setTarget.add(target[i]);
+  }
+
+  return false;
+};
+
 console.log(hasDuplicate([1, 2, 3, 1])); // true
 console.log(hasDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])); // true
 console.log(hasDuplicate([1, 2, 3, 4])); // false

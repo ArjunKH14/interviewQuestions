@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Interview problems",
   "scripts": {
-   "decode": "ts-node start.ts"
+    "decode": "ts-node start.ts"
   },
   "keywords": [],
   "author": "",

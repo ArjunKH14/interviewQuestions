@@ -2,7 +2,7 @@ import { exec } from "child_process";
 import { join } from "path";
 import { cwd } from "process";
 import { readdirSync, statSync } from "fs";
-
+import path from "path";
 // Function to recursively search for a file in a directory
 function findFileInDirectory(
   directory: string,
@@ -29,12 +29,18 @@ function findFileInDirectory(
 
 // Get the filename from command-line arguments or default to 'index.ts'
 const fileName = process.argv[2] || "index.ts";
-const filePath = findFileInDirectory(cwd(), fileName);
+let filePath = fileName;
+if (!filePath.startsWith("src")) {
+  filePath = findFileInDirectory(cwd(), fileName);
+}
+// const filePath = findFileInDirectory(cwd(), fileName);
+// const filePath = fileName;
+const tsConfigPath = path.resolve(__dirname, "tsconfig.json");
 
 console.log(" Running file: ", filePath);
 
 // Execute the ts-node command with the file path
-exec(`ts-node ${filePath}`, (err, stdout, stderr) => {
+exec(`ts-node  ${filePath}`, (err, stdout, stderr) => {
   if (err) {
     console.error(`Error: ${stderr}`);
     process.exit(1);
