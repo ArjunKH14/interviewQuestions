@@ -90,4 +90,47 @@ function threeSumv2(nums: number[]): number[][] {
   return tripletsList;
 }
 
-console.log(threeSumv2([-1, 0, 1, 2, -1, -4]));
+// console.log(threeSumv2([-1, 0, 1, 2, -1, -4]));
+
+//Improving the 3sum solution
+function threeSumv3(nums: number[]): number[][] {
+
+  nums.sort((a, b) => {
+    return a - b
+  });
+  let tripletsList = []
+  for (let [i, target] of nums.entries()) {
+
+    let actualTarget = -target;
+    let left = i + 1, right = nums.length - 1;
+    // Removing first duplicate
+    if(i > 0 && nums[i] == nums[i-1]) {
+      continue;
+    }
+    while (left < right) {
+
+      if (actualTarget === nums[left] + nums[right]) {
+        // tripletSet.add(`${target},${nums[left]},${nums[right]}`);
+        tripletsList.push([target,nums[left],nums[right]]);
+        left += 1;
+
+        // Removing 2nd index duplicate and thats enough and no need to do it for the 3rd index or 3rd key
+        while (left < right && nums[left] === nums[left - 1]) {
+          left += 1;
+          continue;
+      }
+      } else if (nums[left] + nums[right] < actualTarget) {
+        left += 1;
+
+      } else {
+        right -= 1;
+      }
+
+    }
+  }
+  return tripletsList;
+}
+
+console.log(threeSumv3([-1, 0, 1, 2, -1, -4]));
+
+

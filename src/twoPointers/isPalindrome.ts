@@ -35,3 +35,25 @@ function isPalindrome(s: string) {
   return true;
 }
 console.log(isPalindrome("A man, a plan, a canal: Panama"));
+
+
+//Re Wrote on Feb 21st
+function isPalindrome2(phrase: string) {
+
+  phrase = phrase.toLowerCase();
+  phrase= phrase.replace(/[^0-9a-z]/gi, "");
+  console.log(phrase);
+
+  let left = 0, right = phrase.length - 1;
+
+  while(left<right) {
+    if(phrase[left]!==phrase[right]) {
+      return false;
+    }
+    left+=1;
+    right-=1;
+  }
+
+  return true;
+}
+console.log(isPalindrome2("A man, a plan, a canal: Panama"));
